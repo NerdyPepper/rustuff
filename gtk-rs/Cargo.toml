@@ -1,0 +1,11 @@
+[package]
+name = "gtk-rs"
+version = "0.1.0"
+authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
+
+[dependencies]
+
+[dependencies.gtk]
+version = "0.4.1"
+features = ["v3_10"]
+
