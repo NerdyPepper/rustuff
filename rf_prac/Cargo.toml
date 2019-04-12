@@ -1,0 +1,6 @@
+[package]
+name = "rf_prac"
+version = "0.1.0"
+authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
+
+[dependencies]

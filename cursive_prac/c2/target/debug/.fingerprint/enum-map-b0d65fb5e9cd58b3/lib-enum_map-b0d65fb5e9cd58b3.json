@@ -1,1 +1,0 @@
-{"rustc":14116989018355672531,"features":"[]","target":13490034486277210901,"profile":3026933032369683551,"path":8077195649863532757,"deps":[["array-macro v1.0.2",17085572826905159677],["enum-map-derive v0.2.10",1623055521797417229],["reexport-proc-macro v1.0.5",1202659087690099815]],"local":[{"Precalculated":"0.2.36"}],"rustflags":[],"epoch":"Epoch2015"}

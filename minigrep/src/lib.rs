@@ -11,7 +11,7 @@ pub struct Config{
 }
 
 impl Config {
-    pub fn new(argvec: &[String]) -> Result<Config, &'static str> {
+    pub fn new(mut args: std::env::Args) -> Result<Config, &'static str> {
         if argvec.len() < 3 {
             return Err("not enough args");
         }

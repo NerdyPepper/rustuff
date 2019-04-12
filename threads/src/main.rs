@@ -1,23 +1,26 @@
 use std::thread;
 use std::time::Duration;
+use std::sync::mpsc;
+
+use std::sync::{ Mutex, Arc };
 
 fn main() {
-    let a: f64 = 163877354725619.0;
-    let b: f64 = 30051054552980641676923138.0;
+    let counter = Arc::new( Mutex::new(0) );
+    let mut handles = vec![];
 
-    let mut s: f64 = b / a;
-
-    let handle = thread::spawn(|| {
-        for d in 1..273645183562i128 {
-            let d = d as f64;
-        }
-    });
-
-    handle.join().unwrap();
-
-    for i in 1..5 {
-        println!("hi number {} from the main thread!", i);
-        thread::sleep(Duration::from_millis(1));
+    for _ in 0..10 {
+        let count = Arc::clone(&counter);
+        let handle = thread::spawn(move || {
+            let mut k = count.lock().unwrap();
+            *k += 1;
+        });
+        handles.push(handle);
     }
 
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    let j = counter.lock().unwrap();
+    println!("{}", *j);
 }

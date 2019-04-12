@@ -1,8 +1,0 @@
-[package]
-name = "curses"
-version = "0.1.0"
-authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
-
-[dependencies]
-cursive = { git = "https://github.com/gyscos/Cursive" }
-

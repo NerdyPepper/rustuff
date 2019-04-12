@@ -8,7 +8,7 @@ use minigrep::*;
 fn main() {
     let argvec: Vec<String> = env::args().collect();
 
-    let config = Config::new(&argvec).unwrap_or_else(|err| {
+    let config = Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing args: {}", err);
         process::exit(1);
     });

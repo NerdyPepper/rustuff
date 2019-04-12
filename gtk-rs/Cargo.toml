@@ -8,4 +8,3 @@ authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
 [dependencies.gtk]
 version = "0.4.1"
 features = ["v3_10"]
-

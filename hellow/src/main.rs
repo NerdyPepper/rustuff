@@ -1,3 +1,4 @@
+
 fn main() {
-    println!("\x1b[31;5mHello, world!\x1b[0m");
+    println!("{}", -1_f64.ln())
 }
