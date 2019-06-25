@@ -1,0 +1,9 @@
+[package]
+name = "cargo-readme"
+version = "0.1.0"
+authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
+edition = "2018"
+description = "Auto-generate README.md files for your crate "
+
+[dependencies]
+cargo = "0.36.0"

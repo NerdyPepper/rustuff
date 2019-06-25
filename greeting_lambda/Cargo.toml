@@ -1,0 +1,9 @@
+[package]
+name = "greeting_lambda"
+version = "0.1.0"
+authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+lambda_runtime_client = "0.2.2"
+

@@ -1,7 +1,0 @@
-[package]
-name = "azultests"
-version = "0.1.0"
-authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
-
-[dependencies]
-azul = { git = "https://github.com/maps4print/azul" }

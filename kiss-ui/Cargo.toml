@@ -1,7 +1,0 @@
-[package]
-name = "kiss-ui"
-version = "0.1.0"
-authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
-
-[dependencies.kiss-ui]
-git = "https://github.com/cybergeek94/kiss-ui"
