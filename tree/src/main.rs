@@ -1,47 +1,42 @@
-use std::fmt;
-
 #[derive(Debug)]
-struct Node<T> {
+struct Node<T: PartialOrd> {
     data: T,
-    children:  Vec<Box<Node<T>>>
+    right: Option<Box<Node<T>>>,
+    left: Option<Box<Node<T>>>,
 }
 
-impl<T> Node<T> {
+impl<T: PartialOrd> Node<T> {
     fn new(data: T) -> Node<T> {
-        Node {
+        return Node {
             data,
-            children: vec![]
+            right: None,
+            left: None
         }
     }
-    fn add_child(&mut self, new_node: &mut Node<T>) {
-        self.children.push(Box::new(new_node));
-    }
-}
-
-impl<T: fmt::Display> fmt::Display for Node<T> {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}\n", self.data)?;
-        for child in &self.children {
-            write!(f, "`- {}\n", child.data)?;
+    fn insert(&mut self, data: T) {
+        if data >= self.data {
+            match self.right {
+                Some(ref mut r) => r.insert(data),
+                None => self.right = Some(Box::new(Node::new(data))),
+            }
+        } else {
+            match self.left {
+                Some(ref mut l) => l.insert(data),
+                None => self.left = Some(Box::new(Node::new(data)))
+            }
         }
-        write!(f, "")
+    }
+    fn post_order() {
+        unimplemented!()
     }
 }
 
 fn main() {
-    let mut root   = Node::new(0);
-    let mut child1 = Node::new(1);
-    let mut child11    = Node::new(11);
-    let mut child12    = Node::new(12);
-    let mut child2     = Node::new(2);
-    let mut child3     = Node::new(3);
-
-    root.add_child(&mut child1);
-    root.add_child(&mut child2);
-    root.add_child(&mut child3);
-
-    child1.add_child(&mut child11);
-    child1.add_child(&mut child12);
-
-    println!("{}", root);
+    let mut root = Node::new("g");
+    root.insert("d");
+    root.insert("b");
+    root.insert("a");
+    root.insert("z");
+    println!("{:#?}", root);
 }
+

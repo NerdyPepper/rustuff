@@ -1,11 +1,8 @@
 [package]
-name = "aksh"
+name = "tico"
 version = "0.1.0"
 authors = ["NerdyPepper <akshayoppiliappan@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-rustyline = "4.1.0"
-cicada = "0.9.8"
-nix = "0.14.1"
-logos = "0.9.7"
+tico = "1.0.0"

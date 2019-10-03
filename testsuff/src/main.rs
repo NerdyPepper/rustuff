@@ -1,26 +1,29 @@
 #![allow(dead_code)]
 #![allow(unused_imports)]
 
-struct Closure<F> {
-    data: (u8, u16),
-    func: F,
-}
-
-impl<F> Closure<F>
-    where F: Fn(&(u8, u16)) -> &u8,
-{
-    fn call(&self) -> &u8 {
-        (self.func)(&self.data)
-    }
-}
-
-fn do_it(data: &(u8, u16)) -> &u8 { &data.0 }
-
-use num::Num;
+use std::sync::{ RwLock, Arc };
+use std::thread;
 
 fn main() {
-    // let result = <f64 as Num>::from_str_radix("24.5", 2);
-    // println!("{:?}", result)
-    
-    println!("{}", std::u32::MAX);
+    let datum = Arc::new(RwLock::new(10));
+
+    let readers: Vec<_> = (0..2).map(|_| {
+        let datum = Arc::clone(&datum);
+        thread::spawn( move || {
+            let reader = datum.read().unwrap();
+            println!("Read {}", reader);
+        })
+    }).collect();
+
+    let write_clone = Arc::clone(&datum);
+    let writer = thread::spawn( move || {
+        let mut w = write_clone.write().unwrap();
+        *w = 11;
+    });
+
+    for r in readers {
+        r.join().unwrap();
+    }
+    writer.join().unwrap();
 }
+

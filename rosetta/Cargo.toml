@@ -1,0 +1,10 @@
+[workspace]
+
+members = [
+    "main",
+    "four-bit-adder",
+    "gaussian-elimination",
+    "mem-alloc",
+    "fork",
+    "peak-finding"
+]

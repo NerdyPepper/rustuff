@@ -1,9 +1,6 @@
 fn main() {
-    let cmd = r#"ls $(pwd)"#;
-    let tokens = cicada::cmd_to_tokens(cmd);
-    let op = cicada::run(cmd.as_ref());
+    let cmd = r#"ls "good folder" | grep me > file1"#;
+    let tokens: () = cicada::cmd_to_tokens(cmd);
     println!("{:?}", tokens);
-    println!();
-    println!("{}", op.stdout);
 
 }
